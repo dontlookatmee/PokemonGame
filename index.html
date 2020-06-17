@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeGame</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="image-bg">
+    <div class="header">
+      <img
+        src="https://seeklogo.com/images/P/Pokemon-logo-497D61B223-seeklogo.com.png"
+        alt="logo"
+      />
+    </div>
+    <div class="start-game">
+      <button class="start-button" onclick="renderPokemonList()">
+        Start Game
+      </button>
+    </div>
+    <div class="pokemons-grid">
+      <div class='search-field hidden'>
+      <input class='search-field-input' type="text" placeholder='Search for pokemon by name'>
+      </div>
+      <ul class="pokemon-list"></ul>
+    </div>
+    <div class="battlefield hidden">
+      <div class="start-battle">
+        <button class="start-battle-button">
+          Start Battle
+        </button>
+      </div>
+      <div class="play-again hidden">
+        <button class="play-again-button"">
+          Play Again
+        </button>
+      </div>
+      <div class="result hidden"></div>
+      <ul class="pokemon-list-battle"></ul>
+    </div>
+  </div>
+</div>
+    <script src="index.js"></script>
+  </body>
+</html>
