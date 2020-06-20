@@ -158,10 +158,11 @@ class PokemonsList {
     for (let pokemon of pokemonsArr) {
       const { id, sprites, name, ability, moves, stats } = pokemon;
       const newLi = document.createElement('li');
+      // Adding pokemon images as canvas
+      const newCanvas = new Canvas(100, 100, sprites.front_default);
       newLi.classList.add(name);
       newLi.dataset.id = id;
       newLi.innerHTML = `
-            <img src="${sprites.front_default}" class='pokemon-image' />
             <div class="pokemon-data">
               <p>Name: ${gameInit.firstLetterToUpperCase(name)}</p>
               <p>Ability: ${gameInit.firstLetterToUpperCase(ability)}</p>
@@ -184,6 +185,7 @@ class PokemonsList {
               </div>
               <button class="select-pokemon-button">Select</button>
               `;
+      newLi.prepend(newCanvas.canvas);
       gameInit.pokemonListHTML.appendChild(newLi);
     }
   }
@@ -437,6 +439,24 @@ class Sound {
   stop() {
     this.sound.pause();
     this.sound.currentTime = 0;
+  }
+}
+
+class Canvas {
+  constructor(x, y, img) {
+    this.canvas = document.createElement('canvas');
+    this.ctx = this.canvas.getContext('2d');
+    this.canvas.width = x;
+    this.canvas.height = y;
+    this.draw(img);
+  }
+
+  draw(img) {
+    this.image = new Image();
+    this.image.src = img;
+    this.image.onload = () => {
+      this.ctx.drawImage(this.image, 0, 0);
+    };
   }
 }
 
